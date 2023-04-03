@@ -7,11 +7,11 @@ const formEl = document.querySelector('#search-form');
 const loadBtnEl = document.querySelector('.load-more');
 let searchState = '';
 let pageState = 1;
-
+console.log(getImages('cat', 1));
 formEl.addEventListener('submit', onSubmit);
 loadBtnEl.addEventListener('click', onLoad);
 // formEl.addEventListener('submit', scrollPage);
-// window.addEventListener('scroll', scrollPage);
+window.addEventListener('scroll', scrollPage);
 
 function onSubmit(e) {
     e.preventDefault();
@@ -38,7 +38,7 @@ function onLoad() {
         informs(page, totalPages,response.totalHits);
         renderImages(createCollection(response.hits));
         lightbox.refresh();
-        
+        scrollPage();
         if (page === totalPages || totalPages===0) {
             loadBtnEl.style.display = 'none';
         } else {
@@ -52,24 +52,14 @@ function onLoad() {
 const lightbox = new SimpleLightbox('.gallery a', {
         captionDelay: 250,
 });
-// function scrollPage() {
-//     console.log('scroll');
-//     const cardHeight = 230;
-//     if (document.querySelector(".gallery")
-//         .firstElementChild !== null) {
-//         const { height: cardHeight } = document
-//             .querySelector(".gallery")
-//         .firstElementChild.getBoundingClientRect();
-//     console.log(cardHeight);
-//          window.scrollBy({
-//             top: cardHeight * 2,
-//             behavior: "smooth",
-//         })
-//     }
-//     console.log('scroll');
-//         window.scrollBy({
-//             top: cardHeight * 2,
-//             behavior: "smooth",
-//         })
+function scrollPage() {
+        const cardHeight = 230;
+        window.scrollBy({
+            top: cardHeight * 2,
+            behavior: "smooth",
+        })
     
-// }
+}
+function loadMoreData() {
+  // Завантажуємо нові дані і додаємо їх до сторінки
+}
