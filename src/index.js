@@ -7,15 +7,12 @@ const formEl = document.querySelector('#search-form');
 const loadBtnEl = document.querySelector('.load-more');
 let searchState = '';
 let pageState = 1;
-console.log(getImages('cat', 1));
 formEl.addEventListener('submit', onSubmit);
 loadBtnEl.addEventListener('click', onLoad);
-// formEl.addEventListener('submit', scrollPage);
-window.addEventListener('scroll', scrollPage);
+window.addEventListener('scroll', onScroll);
 
 function onSubmit(e) {
     e.preventDefault();
-    
     const { elements: { searchQuery } } = e.currentTarget;
     const search = searchQuery.value.trim();
     if (search !== searchState) {
@@ -23,16 +20,16 @@ function onSubmit(e) {
         loadBtnEl.style.display = 'none';
         searchState = search;
         pageState = 1;
-        fetchImages(searchState, pageState);
+        loadImages(searchState, pageState);
     }
 }    
 function onLoad() {
     clearGallery();
     loadBtnEl.style.display = 'none';
     pageState += 1;
-    fetchImages(searchState, pageState);
+    loadImages(searchState, pageState);
 }
- function fetchImages(search, page) {
+ function loadImages(search, page) {
     getImages(search, page).then((response) => {
         const totalPages = Math.ceil(response.totalHits/PER_PAGE);
         informs(page, totalPages,response.totalHits);
@@ -60,6 +57,11 @@ function scrollPage() {
         })
     
 }
-function loadMoreData() {
-  // Завантажуємо нові дані і додаємо їх до сторінки
+function onScroll() {
+    scrollPage();
+//     if (window.pageYOffset >= document.documentElement.scrollHeight - window.innerHeight) {
+//         pageState += 1;
+//         clearGallery();
+//     loadImages(searchState,pageState);
+//   }
 }

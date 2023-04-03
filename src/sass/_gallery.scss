@@ -1,9 +1,7 @@
 .gallery {
     display: grid;
     max-width: 1140px;
-    @media screen and (min-width:552px) {
     grid-template-columns: repeat(auto-fit, 270px);
-    }
     grid-auto-rows: 230px;
     grid-gap: 12px;
     justify-content: center;
@@ -17,7 +15,6 @@
 .photo-card {
     width: 270px;
     height: 230px;
-    // position: relative;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
         0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 }
@@ -27,19 +24,12 @@
     
     }
 .info-item {
-    // display: block;
-    // width: 50px;
-    text-align: center;
-// align-items: center;
+   text-align: center;
     margin-top: 8px;
-font-size: 15px;
+    font-size: 15px;
 }
 .gallery a {
     display: block;
-    // height: 100%;
-}
-.gallery__image:hover {
-    transform: scale(1.03);
 }
 
 img {
@@ -48,29 +38,20 @@ img {
     width: 100%;
     object-fit: cover;
     transition: transform var(--animation-duration) var(--timing-function);
-}
-
-.gallery__link {
-    display: block;
-    text-decoration: none;
-    height: 100%;
-}
-
-.gallery__link:hover {
-    cursor: zoom-in;
+    
 }
 .load-more {
     display: none;
     background-color: #2196F3;
-        color: #FFFFFF;
+    color: #FFFFFF;
     margin-bottom: 10px;
-        cursor: pointer;
+    cursor: pointer;
     text-transform: uppercase;
-            font-family: inherit;
-        font-weight: 700;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        padding: 10px 24px;
+    font-family: inherit;
+    font-weight: 700;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 10px 24px;
     &:hover,
     &:focus {
             background-color: #188CE8;
