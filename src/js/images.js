@@ -38,7 +38,7 @@ const renderImages = (collection) => {
         </div>
         </div></a>`
     }).join("");
-    galleryEl.innerHTML = markup;
+    galleryEl.insertAdjacentHTML('beforeend', markup);
 }
 const clearGallery = () => {
     galleryEl.innerHTML = '';
